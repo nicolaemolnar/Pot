@@ -9,6 +9,13 @@ public class Group {
     private String name;
     private List<Friend> friends;
 
+    public Group(){
+    }
+
+    public Group(Long id){
+        this.id = id;
+    }
+
     // SETTERS
     public void setId(Long id) {
         this.id = id;

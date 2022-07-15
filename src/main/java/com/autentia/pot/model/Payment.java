@@ -7,13 +7,17 @@ import java.sql.Date;
 public class Payment {
 
     private Long id;
-    private float amount;
+    private double amount;
     private Date date;
     private Friend lender;
     private Group pot;
 
-    public Payment(float amount, Friend lender, Group pot){
+    public Payment(){
+    }
+
+    public Payment(double amount, Date date, Friend lender, Group pot){
         this.amount = amount;
+        this.date = date;
         this.lender = lender;
         this.pot = pot;
     }
@@ -23,7 +27,7 @@ public class Payment {
         this.id = id;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -46,7 +50,7 @@ public class Payment {
         return id;
     }
 
-    public float getAmount() {
+    public double getAmount() {
         return amount;
     }
 
