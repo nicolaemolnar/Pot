@@ -11,7 +11,7 @@ public class PaymentService {
     @Autowired
     private PaymentRepository repository;
 
-    public void addPayment(Payment payment){
-        repository.save(payment);
+    public void addPayment(float amount, Long lenderId, Long potId){
+        // Payment payment = new Payment()
     }
 }

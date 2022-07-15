@@ -22,6 +22,10 @@ public class Group {
         this.friends = friends;
     }
 
+    public void addFriend(Friend friend) {
+        this.friends.add(friend);
+    }
+
     // GETTERS
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

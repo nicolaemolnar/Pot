@@ -3,6 +3,7 @@ package com.autentia.pot.controller;
 import com.autentia.pot.model.Friend;
 import com.autentia.pot.service.FriendService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,8 +26,9 @@ public class FriendController {
     }
 
     @PostMapping("/v2/users")
-    public void addUser(@RequestBody String name){
-        service.addFriend(new Friend(name));
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addUser(@RequestBody Friend friend){
+        service.addFriend(friend);
     }
 
     @DeleteMapping(value = "/v2/users/{id}")

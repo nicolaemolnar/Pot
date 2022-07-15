@@ -12,6 +12,12 @@ public class Payment {
     private Friend lender;
     private Group pot;
 
+    public Payment(float amount, Friend lender, Group pot){
+        this.amount = amount;
+        this.lender = lender;
+        this.pot = pot;
+    }
+
     // SETTER
     public void setId(Long id) {
         this.id = id;
