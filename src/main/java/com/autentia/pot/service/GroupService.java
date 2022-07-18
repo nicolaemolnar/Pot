@@ -26,4 +26,8 @@ public class GroupService {
         repository.save(group);
     }
 
+    public Group getGroupBy(Long groupId){
+        return repository.findGroupById(groupId);
+    }
+
 }

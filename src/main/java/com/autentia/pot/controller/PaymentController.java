@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -24,5 +25,10 @@ public class PaymentController {
     @ResponseStatus(HttpStatus.CREATED)
     public void addPayment(@RequestBody Payment payment){
         paymentService.addPayment(payment);
+    }
+
+    @GetMapping("/payments/{groupId}/balance")
+    public Map<String, Double> getBalanceOf(@PathVariable("groupId") Long groupId){
+        return paymentService.getBalanceOf(groupId);
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -38,5 +39,10 @@ public class GroupController {
     @ResponseStatus(HttpStatus.CREATED)
     public void addUserToGroup(@RequestBody GroupDTO dto){
         service.addFriendToGroup(dto.getFriend(), dto.getGroup());
+    }
+
+    @GetMapping("/groups/{groupId}")
+    public Group getGroupBy(@PathVariable("groupId") Long groupId){
+        return service.getGroupBy(groupId);
     }
 }
