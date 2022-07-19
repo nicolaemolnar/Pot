@@ -1,11 +1,11 @@
-package com.autentia.pot.model.DTO;
+package com.autentia.pot.model.dto;
 
 import com.autentia.pot.model.Friend;
 import com.autentia.pot.model.Group;
 
 public class GroupDTO {
-    private Friend friend;
-    private Group group;
+    private final Friend friend;
+    private final Group group;
 
     public GroupDTO(Friend friend, Group group){
         this.friend = friend;

@@ -1,7 +1,6 @@
 package com.autentia.pot.controller;
 
-import com.autentia.pot.model.DTO.GroupDTO;
-import com.autentia.pot.model.Friend;
+import com.autentia.pot.model.dto.GroupDTO;
 import com.autentia.pot.model.Group;
 import com.autentia.pot.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api")

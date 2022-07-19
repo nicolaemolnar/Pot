@@ -1,13 +1,15 @@
 package com.autentia.pot.model;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.Objects;
 
 @Entity
 public class Payment {
 
     private Long id;
-    private double amount;
+    private BigDecimal amount;
     private Date date;
     private Friend lender;
     private Group pot;
@@ -15,7 +17,7 @@ public class Payment {
     public Payment(){
     }
 
-    public Payment(double amount, Date date, Friend lender, Group pot){
+    public Payment(BigDecimal amount, Date date, Friend lender, Group pot){
         this.amount = amount;
         this.date = date;
         this.lender = lender;
@@ -27,7 +29,7 @@ public class Payment {
         this.id = id;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
@@ -50,7 +52,7 @@ public class Payment {
         return id;
     }
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
@@ -67,4 +69,5 @@ public class Payment {
     public Group getPot(){
         return this.pot;
     }
+
 }

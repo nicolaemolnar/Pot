@@ -1,12 +1,13 @@
 package com.autentia.pot.controller;
 
-import com.autentia.pot.model.DTO.DebtDTO;
+import com.autentia.pot.model.dto.DebtDTO;
 import com.autentia.pot.model.Payment;
 import com.autentia.pot.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -29,12 +30,12 @@ public class PaymentController {
     }
 
     @GetMapping("/payments/{groupId}/balance")
-    public Map<String, Double> getBalanceOf(@PathVariable("groupId") Long groupId){
+    public Map<String, BigDecimal> getBalanceOf(@PathVariable("groupId") Long groupId){
         return paymentService.getBalanceOf(groupId);
     }
 
-    @GetMapping("/payments/debtResolution")
-    public List<DebtDTO> getDebtResolution(@RequestBody Map<String, Double> balance){
+    @GetMapping("/payments/debt")
+    public List<DebtDTO> getDebtResolution(@RequestBody Map<String, BigDecimal> balance){
         return paymentService.getDebtResolution(balance);
     }
 }

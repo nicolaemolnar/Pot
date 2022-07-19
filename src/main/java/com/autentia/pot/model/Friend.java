@@ -1,7 +1,7 @@
 package com.autentia.pot.model;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Friend {
@@ -39,5 +39,18 @@ public class Friend {
 
     public void setName(String name){
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Friend friend = (Friend) o;
+        return id == friend.id && Objects.equals(name, friend.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }

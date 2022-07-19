@@ -2,6 +2,7 @@ package com.autentia.pot.model;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity(name="pot")
 public class Group {
@@ -47,5 +48,18 @@ public class Group {
     @ManyToMany
     public List<Friend> getFriends() {
         return friends;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Group group = (Group) o;
+        return Objects.equals(id, group.id); //&& Objects.equals(name, group.name) && Objects.equals(friends, group.friends);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, friends);
     }
 }
