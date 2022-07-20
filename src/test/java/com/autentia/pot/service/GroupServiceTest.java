@@ -31,14 +31,14 @@ class GroupServiceTest {
     }
 
     @Test
-    void addGroup() {
+    void shouldAddGroup() {
         Group group = new Group(1L);
         service.addGroup(group);
         verify(repository).save(group);
     }
 
     @Test
-    void addFriendToGroup() {
+    void shouldAddFriendToGroup() {
         Friend friend = new Friend("Testing subject");
         Group group = new Group(2L);
         List<Friend> expected_friends = new ArrayList<>();
@@ -50,7 +50,7 @@ class GroupServiceTest {
     }
 
     @Test
-    void getGroupBy() {
+    void shouldGetGroupBy() {
         Long groupId = 1L;
 
         when(repository.findGroupById(groupId)).thenReturn(new Group(groupId));

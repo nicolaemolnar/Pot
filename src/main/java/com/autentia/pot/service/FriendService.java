@@ -10,8 +10,11 @@ import java.util.List;
 
 @Service
 public class FriendService {
-    @Autowired
     private FriendRepository repository;
+
+    public FriendService(FriendRepository repository){
+        this.repository = repository;
+    }
 
     public void addFriend(Friend friend){
         repository.save(friend);
