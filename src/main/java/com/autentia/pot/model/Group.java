@@ -1,6 +1,7 @@
 package com.autentia.pot.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,10 +12,12 @@ public class Group {
     private List<Friend> friends;
 
     public Group(){
+        friends = new ArrayList<>();
     }
 
     public Group(Long id){
         this.id = id;
+        friends = new ArrayList<>();
     }
 
     // SETTERS
