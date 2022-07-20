@@ -46,7 +46,6 @@ class GroupServiceTest {
 
         service.addFriendToGroup(friend, group);
         assertEquals(expected_friends, group.getFriends());
-        verify(repository).save(group);
     }
 
     @Test
@@ -56,7 +55,6 @@ class GroupServiceTest {
         when(repository.findGroupById(groupId)).thenReturn(new Group(groupId));
 
         Group group = service.getGroupBy(groupId);
-        verify(repository).findGroupById(groupId);
         assertEquals(new Group(groupId), group);
     }
 }

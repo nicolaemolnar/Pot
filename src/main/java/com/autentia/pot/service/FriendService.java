@@ -27,9 +27,4 @@ public class FriendService {
     public Friend getFriendBy(Long id){
         return repository.findFriendById(id);
     }
-
-    public void deleteFriendBy(Long id){
-        if (repository.findFriendById(id) != null)
-            repository.deleteById(id);
-    }
 }

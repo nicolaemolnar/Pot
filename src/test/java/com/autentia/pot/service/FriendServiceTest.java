@@ -16,7 +16,7 @@ class FriendServiceTest {
     private final FriendService service = new FriendService(repository);
 
     @Test
-    void addFriend() {
+    void shouldAddFriend() {
         Friend friend = new Friend("Test user");
         service.addFriend(friend);
         verify(repository).save(friend);
@@ -32,35 +32,17 @@ class FriendServiceTest {
 
         List<Friend> friends = service.getAllUsers();
 
-        verify(repository).findAll();
         assertEquals(expected_friends, friends);
     }
 
     @Test
-    void getFriendBy() {
+    void shouldGetFriendBy() {
         Long friendId = 2L;
         Friend expected_friend = new Friend(friendId, "Test friend");
         when(repository.findFriendById(friendId)).thenReturn(expected_friend);
 
         Friend friend = service.getFriendBy(friendId);
 
-        verify(repository).findFriendById(friendId);
         assertEquals(expected_friend, friend);
-    }
-
-    @Test
-    void deleteFriendBy() {
-        Long existingId = 1L;
-        Long nonExistingId = 2L;
-        when(repository.findFriendById(existingId)).thenReturn(new Friend(existingId, "Test"));
-        when(repository.findFriendById(nonExistingId)).thenReturn(null);
-
-        service.deleteFriendBy(existingId);
-        service.deleteFriendBy(nonExistingId);
-
-        verify(repository).findFriendById(existingId);
-        verify(repository).deleteById(existingId);
-        verify(repository).findFriendById(nonExistingId);
-        verify(repository, times(0)).deleteById(nonExistingId);
     }
 }

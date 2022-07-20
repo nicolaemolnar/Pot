@@ -39,7 +39,6 @@ class PaymentServiceTest {
 
         List<Payment> payments = paymentService.getAllPaymentsOf(groupId);
 
-        verify(repository).findPaymentsByPot(testGroup);
         assertEquals(expected_payments, payments);
     }
 
