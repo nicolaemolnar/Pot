@@ -30,9 +30,4 @@ public class FriendController {
     public void addUser(@RequestBody Friend friend){
         service.addFriend(friend);
     }
-
-    @DeleteMapping(value = "/v2/users/{id}")
-    public void deleteUser(@PathVariable(value = "id") Long id){
-        service.deleteFriendBy(id);
-    }
 }

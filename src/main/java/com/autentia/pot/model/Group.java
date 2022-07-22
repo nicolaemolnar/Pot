@@ -65,4 +65,13 @@ public class Group {
     public int hashCode() {
         return Objects.hash(id, name, friends);
     }
+
+    @Override
+    public String toString() {
+        return "Group{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", friends=" + friends +
+                '}';
+    }
 }

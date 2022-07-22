@@ -1,7 +1,8 @@
-package com.autentia.pot.service;
+package com.autentia.pot.service.unit;
 
 import com.autentia.pot.model.Friend;
 import com.autentia.pot.repository.FriendRepository;
+import com.autentia.pot.service.FriendService;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

@@ -70,4 +70,27 @@ public class Payment {
         return this.pot;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Payment payment = (Payment) o;
+        return Objects.equals(id, payment.id) && Objects.equals(amount, payment.amount) && Objects.equals(date, payment.date) && Objects.equals(lender, payment.lender) && Objects.equals(pot, payment.pot);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, amount, date, lender, pot);
+    }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "id=" + id +
+                ", amount=" + amount +
+                ", date=" + date +
+                ", lender=" + lender +
+                ", pot=" + pot +
+                '}';
+    }
 }

@@ -1,10 +1,12 @@
-package com.autentia.pot.service;
+package com.autentia.pot.service.unit;
 
 import com.autentia.pot.model.Friend;
 import com.autentia.pot.model.Group;
 import com.autentia.pot.model.Payment;
 import com.autentia.pot.model.dto.DebtDTO;
 import com.autentia.pot.repository.PaymentRepository;
+import com.autentia.pot.service.GroupService;
+import com.autentia.pot.service.PaymentService;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

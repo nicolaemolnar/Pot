@@ -53,4 +53,12 @@ public class Friend {
     public int hashCode() {
         return Objects.hash(id, name);
     }
+
+    @Override
+    public String toString() {
+        return "Friend{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
