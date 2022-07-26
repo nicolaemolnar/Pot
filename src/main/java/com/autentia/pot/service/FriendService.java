@@ -3,7 +3,6 @@ package com.autentia.pot.service;
 import com.autentia.pot.model.Friend;
 import com.autentia.pot.repository.FriendRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,11 +19,11 @@ public class FriendService {
         repository.save(friend);
     }
 
-    public List<Friend> getAllUsers(){
+    public List<Friend> getAllFriends(){
         return repository.findAll();
     }
 
-    public Friend getFriendBy(Long id){
+    public Friend getFriendById(Long id){
         return repository.findFriendById(id);
     }
 }

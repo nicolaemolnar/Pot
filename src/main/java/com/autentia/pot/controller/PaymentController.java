@@ -18,8 +18,8 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
-    @GetMapping("/payments/{groupId}")
-    public List<Payment> getPaymentsOfGroup(@PathVariable(value = "groupId") Long id){
+    @GetMapping("/payments/{potId}")
+    public List<Payment> getPaymentsOfGroup(@PathVariable(value = "potId") Long id){
         return paymentService.getAllPaymentsOf(id);
     }
 
@@ -29,9 +29,9 @@ public class PaymentController {
         paymentService.addPayment(payment);
     }
 
-    @GetMapping("/payments/{groupId}/balance")
-    public Map<String, BigDecimal> getBalanceOf(@PathVariable("groupId") Long groupId){
-        return paymentService.getBalanceOf(groupId);
+    @GetMapping("/payments/{potId}/balance")
+    public Map<String, BigDecimal> getBalanceOf(@PathVariable("potId") Long potId){
+        return paymentService.getBalanceOf(potId);
     }
 
     @GetMapping("/payments/debt")

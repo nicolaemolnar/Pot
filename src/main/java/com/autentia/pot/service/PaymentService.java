@@ -2,51 +2,50 @@ package com.autentia.pot.service;
 
 import com.autentia.pot.model.dto.DebtDTO;
 import com.autentia.pot.model.Friend;
-import com.autentia.pot.model.Group;
+import com.autentia.pot.model.Pot;
 import com.autentia.pot.model.Payment;
 import com.autentia.pot.repository.PaymentRepository;
 
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.*;
 
 @Service
 public class PaymentService {
     private final PaymentRepository repository;
-    private final GroupService groupService;
+    private final PotService potService;
 
-    public PaymentService(PaymentRepository repository, GroupService groupService) {
+    public PaymentService(PaymentRepository repository, PotService potService) {
         this.repository = repository;
-        this.groupService = groupService;
+        this.potService = potService;
     }
 
     public void addPayment(Payment payment){
         repository.save(payment);
     }
 
-    public List<Payment> getAllPaymentsOf(Long groupId){
-        return repository.findPaymentsByPot(new Group(groupId));
+    public List<Payment> getAllPaymentsOf(Long potId){
+        return repository.findPaymentsByPot(new Pot(potId));
     }
 
-    public Map<String, BigDecimal> getBalanceOf(Long groupId){
+    public Map<String, BigDecimal> getBalanceOf(Long potId){
         Map<String, BigDecimal> balance = new HashMap<>();
         BigDecimal sharedCost = BigDecimal.valueOf(0.0);
 
-        List<Payment> payments = repository.findPaymentsByPot(new Group(groupId));
+        List<Payment> payments = repository.findPaymentsByPot(new Pot(potId));
         List<Friend> friends;
         if (!payments.isEmpty())
              friends = payments.get(0).getPot().getFriends();
         else
-            friends = groupService.getGroupBy(groupId).getFriends();
+            friends = potService.getPotById(potId).getFriends();
 
         // Init all friends to 0 to avoid exceptions
         for (Friend friend : friends){
             balance.put(friend.getName(), BigDecimal.valueOf(0.0));
         }
 
-        // Accumulation of total individual cost and total group cost
+        // Accumulation of total individual cost and total cost of the pot
         for (Payment payment : payments){
             String lenderName = payment.getLender().getName();
             BigDecimal previousAmount = balance.get(lenderName);

@@ -1,11 +1,11 @@
 package com.autentia.pot.service.unit;
 
 import com.autentia.pot.model.Friend;
-import com.autentia.pot.model.Group;
+import com.autentia.pot.model.Pot;
 import com.autentia.pot.model.Payment;
 import com.autentia.pot.model.dto.DebtDTO;
 import com.autentia.pot.repository.PaymentRepository;
-import com.autentia.pot.service.GroupService;
+import com.autentia.pot.service.PotService;
 import com.autentia.pot.service.PaymentService;
 import org.junit.jupiter.api.Test;
 
@@ -17,12 +17,12 @@ import static org.mockito.Mockito.*;
 
 class PaymentServiceTest {
     private final PaymentRepository repository = mock(PaymentRepository.class);
-    private final GroupService groupService = mock(GroupService.class);
+    private final PotService groupService = mock(PotService.class);
     private final PaymentService paymentService = new PaymentService(repository, groupService);
 
     @Test
     public void shouldAddPayment() {
-        Payment payment = new Payment(BigDecimal.valueOf(2.23), new Date(), new Friend("Juan"), new Group(1L));
+        Payment payment = new Payment(BigDecimal.valueOf(2.23), new Date(), new Friend("Juan"), new Pot(1L));
         paymentService.addPayment(payment);
         verify(repository).save(payment);
     }
@@ -30,7 +30,7 @@ class PaymentServiceTest {
     @Test
     public void shouldGetAllPayments(){
         Long groupId = 1L;
-        Group testGroup = new Group(groupId);
+        Pot testGroup = new Pot(groupId);
 
         List<Payment> expected_payments = new ArrayList<>();
         expected_payments.add(new Payment(BigDecimal.valueOf(2.23), new Date(), new Friend("Juan"), testGroup));
@@ -47,7 +47,7 @@ class PaymentServiceTest {
     @Test
     public void shouldGetBalance(){
         Long groupId = 1L;
-        Group group = new Group(groupId);
+        Pot group = new Pot(groupId);
 
         List<Friend> friends = new ArrayList<>();
         friends.add(new Friend("Francisco Buyo"));
@@ -69,7 +69,7 @@ class PaymentServiceTest {
         expected_balance.put("José María Gutiérrez", BigDecimal.valueOf(-40.85));
 
         when(repository.findPaymentsByPot(group)).thenReturn(payments);
-        when(groupService.getGroupBy(groupId)).thenReturn(group);
+        when(groupService.getPotById(groupId)).thenReturn(group);
 
         Map<String, BigDecimal> balance = paymentService.getBalanceOf(groupId);
 

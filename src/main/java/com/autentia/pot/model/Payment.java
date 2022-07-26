@@ -12,12 +12,12 @@ public class Payment {
     private BigDecimal amount;
     private Date date;
     private Friend lender;
-    private Group pot;
+    private Pot pot;
 
     public Payment(){
     }
 
-    public Payment(BigDecimal amount, Date date, Friend lender, Group pot){
+    public Payment(BigDecimal amount, Date date, Friend lender, Pot pot){
         this.amount = amount;
         this.date = date;
         this.lender = lender;
@@ -41,7 +41,7 @@ public class Payment {
         this.lender = lender;
     }
 
-    public void setPot(Group pot) {
+    public void setPot(Pot pot) {
         this.pot = pot;
     }
 
@@ -66,7 +66,7 @@ public class Payment {
     }
 
     @OneToOne
-    public Group getPot(){
+    public Pot getPot(){
         return this.pot;
     }
 

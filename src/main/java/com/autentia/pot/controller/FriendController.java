@@ -15,17 +15,17 @@ public class FriendController {
     @Autowired
     private FriendService service;
 
-    @GetMapping("/users")
+    @GetMapping("/friends")
     public List<Friend> getUsers(){
-        return service.getAllUsers();
+        return service.getAllFriends();
     }
 
-    @GetMapping(value = "/users/{id}")
+    @GetMapping(value = "/friends/{id}")
     public Friend getUser(@PathVariable(value = "id") Long id){
-        return service.getFriendBy(id);
+        return service.getFriendById(id);
     }
 
-    @PostMapping("/v2/users")
+    @PostMapping("/v2/friends")
     @ResponseStatus(HttpStatus.CREATED)
     public void addUser(@RequestBody Friend friend){
         service.addFriend(friend);

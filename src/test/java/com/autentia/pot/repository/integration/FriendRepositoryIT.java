@@ -6,11 +6,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@Transactional
 class FriendRepositoryIT {
 
     @Autowired
@@ -18,7 +20,7 @@ class FriendRepositoryIT {
 
     @Test
     void shouldSaveFriend() {
-        Friend friend = new Friend("Test user");
+        Friend friend = new Friend("Test friend");
         repository.save(friend);
         Friend result = repository.findFriendById(friend.getId());
 

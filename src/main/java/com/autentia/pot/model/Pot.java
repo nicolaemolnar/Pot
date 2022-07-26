@@ -6,18 +6,23 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity(name="pot")
-public class Group {
+public class Pot {
     private Long id;
     private String name;
     private List<Friend> friends;
 
-    public Group(){
+    public Pot(){
         friends = new ArrayList<>();
     }
 
-    public Group(Long id){
+    public Pot(Long id){
         this.id = id;
         friends = new ArrayList<>();
+    }
+
+    public Pot(String name, List<Friend> friends){
+        this.name = name;
+        this.friends = friends;
     }
 
     // SETTERS
@@ -57,7 +62,7 @@ public class Group {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Group group = (Group) o;
+        Pot group = (Pot) o;
         return Objects.equals(id, group.id); //&& Objects.equals(name, group.name) && Objects.equals(friends, group.friends);
     }
 
@@ -68,7 +73,7 @@ public class Group {
 
     @Override
     public String toString() {
-        return "Group{" +
+        return "Pot{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", friends=" + friends +

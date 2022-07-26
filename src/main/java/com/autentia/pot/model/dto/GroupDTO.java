@@ -1,13 +1,13 @@
 package com.autentia.pot.model.dto;
 
 import com.autentia.pot.model.Friend;
-import com.autentia.pot.model.Group;
+import com.autentia.pot.model.Pot;
 
 public class GroupDTO {
     private final Friend friend;
-    private final Group group;
+    private final Pot group;
 
-    public GroupDTO(Friend friend, Group group){
+    public GroupDTO(Friend friend, Pot group){
         this.friend = friend;
         this.group = group;
     }
@@ -16,7 +16,7 @@ public class GroupDTO {
         return this.friend;
     }
 
-    public Group getGroup(){
+    public Pot getGroup(){
         return this.group;
     }
 }

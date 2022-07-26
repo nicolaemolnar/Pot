@@ -31,7 +31,7 @@ class FriendServiceTest {
         expected_friends.add(new Friend("Nicolae Alexandru Molnar"));
         when(repository.findAll()).thenReturn(expected_friends);
 
-        List<Friend> friends = service.getAllUsers();
+        List<Friend> friends = service.getAllFriends();
 
         assertEquals(expected_friends, friends);
     }
@@ -42,7 +42,7 @@ class FriendServiceTest {
         Friend expected_friend = new Friend(friendId, "Test friend");
         when(repository.findFriendById(friendId)).thenReturn(expected_friend);
 
-        Friend friend = service.getFriendBy(friendId);
+        Friend friend = service.getFriendById(friendId);
 
         assertEquals(expected_friend, friend);
     }
