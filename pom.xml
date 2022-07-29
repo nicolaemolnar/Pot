@@ -2,6 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<packaging>pom</packaging>
+	<modules>
+		<module>core</module>
+		<module>rest</module>
+		<module>application</module>
+	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -22,11 +28,6 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>io.fabric8</groupId>
-			<artifactId>docker-maven-plugin</artifactId>
-			<version>0.40.1</version>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-failsafe-plugin</artifactId>
 			<version>3.0.0-M7</version>
@@ -38,13 +39,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -58,13 +52,8 @@
 		</dependency>
 	</dependencies>
 
-
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
 			<!-- Failsafe plugin needs to be declared explicitly -->
 			<plugin>
 				<artifactId>maven-failsafe-plugin</artifactId>
@@ -78,39 +67,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>io.fabric8</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.40.1</version>
-				<configuration>
-					<verbose>true</verbose>
-					<images>
-						<image>
-							<external>
-								<type>compose</type>
-								<basedir>${project.basedir}/src/test/resources</basedir>
-								<ignoreBuild>true</ignoreBuild>
-							</external>
-						</image>
-					</images>
-				</configuration>
-				<executions>
-					<execution>
-						<id>start</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>start</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>stop</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>stop</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
+
 </project>
